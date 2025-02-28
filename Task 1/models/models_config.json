@@ -1,0 +1,47 @@
+{
+    "RandomForestModel": {
+        "n_estimators": 100,
+        "max_depth": 20,
+        "random_state": 42,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1
+    },
+    "NNClassifier": {
+        "input_shape": [784],
+        "output_units": 10,
+        "dense_layers": [
+            {"units": 256, "activation": "relu", "dropout": 0.2},
+            {"units": 128, "activation": "relu", "dropout": 0.2}
+        ],
+        "output_activation": "softmax",
+        "optimizer": {
+            "type": "adam",
+            "learning_rate": 0.001
+        },
+        "loss": "categorical_crossentropy",
+        "metrics": ["accuracy"],
+        "train_params": {
+            "val_size": 0.2,
+            "epochs": 10,
+            "batch_size": 32
+        }
+    },
+    "CNNClassifier": {
+        "batch_size": 32,
+        "input_shape": [28, 28, 1],
+        "conv_layers": [
+            {"filters": 16, "kernel_size": [3, 3], "activation": "relu", "padding": "same"},
+            {"filters": 32, "kernel_size": [3, 3], "activation": "relu", "padding": "same"}
+        ],
+        "pool_size": [2, 2],
+        "dense_units": 128,
+        "activation_dense": "relu",
+        "output_units": 10,
+        "output_activation": "softmax",
+        "optimizer": "adam",
+        "loss": "sparse_categorical_crossentropy",
+        "metrics": ["accuracy"],
+        "val_size": 0.2,
+        "epochs": 10
+    }
+}
