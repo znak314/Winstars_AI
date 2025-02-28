@@ -2,6 +2,7 @@ import json
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras.utils import to_categorical
 from models_interface import MnistClassifierInterface
 from sklearn.model_selection import train_test_split
 
@@ -12,7 +13,7 @@ class NNClassifier(MnistClassifierInterface):
             config = json.load(file)["NNClassifier"]
 
         input_shape = tuple(config["input_shape"])
-        num_classes = config["output_units"]
+        self.num_classes = config["output_units"]
 
         self.model = keras.Sequential([
             layers.Input(shape=input_shape),
@@ -20,7 +21,7 @@ class NNClassifier(MnistClassifierInterface):
             layers.Dropout(config["dense_layers"][0]["dropout"]),
             layers.Dense(config["dense_layers"][1]["units"], activation=config["dense_layers"][1]["activation"]),
             layers.Dropout(config["dense_layers"][1]["dropout"]),
-            layers.Dense(num_classes, activation=config["output_activation"])
+            layers.Dense(self.num_classes, activation=config["output_activation"])
         ])
 
         self.model.compile(
@@ -35,12 +36,12 @@ class NNClassifier(MnistClassifierInterface):
 
     def train(self, X_train, y_train):
         X_train, X_val, y_train, y_val = train_test_split(
-            X_train, y_train, test_size=self.val_size, random_state=42
+            X_train.reshape(X_train.shape[0], -1), to_categorical(y_train, num_classes=self.num_classes), test_size=self.val_size, random_state=42
         )
 
         self.model.fit(X_train, y_train, validation_data=(X_val, y_val),
                        epochs=self.epochs, batch_size=self.batch_size)
 
     def predict(self, X):
-        predictions = self.model.predict(X)
+        predictions = self.model.predict(X.reshape(X.shape[0], -1))
         return np.argmax(predictions, axis=1)

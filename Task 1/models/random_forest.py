@@ -19,7 +19,7 @@ class RandomForestModel(MnistClassifierInterface):
         )
 
     def train(self, X_train, y_train):
-        self.model.fit(X_train, y_train)
+        self.model.fit(X_train.reshape(X_train.shape[0], -1), y_train)
 
     def predict(self, X):
-        return self.model.predict(X)
+        return self.model.predict(X.reshape(X.shape[0], -1))
