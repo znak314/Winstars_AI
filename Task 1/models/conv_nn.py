@@ -68,3 +68,10 @@ class CNNClassifier(MnistClassifierInterface):
         X_test = X_test.reshape(-1, *self.config["input_shape"])
         predictions = self.model.predict(X_test)
         return np.argmax(predictions, axis=1)
+
+
+'''
+    def predict(self, X_test):
+        predictions = self.model.predict(X_test.reshape(-1, * self.config["input_shape"]))
+        return np.argmax(predictions, axis=1)
+'''
