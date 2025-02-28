@@ -39,12 +39,10 @@ class CNNClassifier(MnistClassifierInterface):
                 )
             self.model.add(layers.MaxPooling2D(pool_size=tuple(self.config["pool_size"])))
 
-        # Додавання повнозв'язних шарів
         self.model.add(layers.Flatten())
         self.model.add(layers.Dense(self.config["dense_units"], activation=self.config["activation_dense"]))
         self.model.add(layers.Dense(self.config["output_units"], activation=self.config["output_activation"]))
 
-        # Компляція моделі
         self.model.compile(
             optimizer=self.config["optimizer"],
             loss=self.config["loss"],
@@ -69,9 +67,3 @@ class CNNClassifier(MnistClassifierInterface):
         predictions = self.model.predict(X_test)
         return np.argmax(predictions, axis=1)
 
-
-'''
-    def predict(self, X_test):
-        predictions = self.model.predict(X_test.reshape(-1, * self.config["input_shape"]))
-        return np.argmax(predictions, axis=1)
-'''
