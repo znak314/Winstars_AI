@@ -43,7 +43,6 @@ def main():
     parser.add_argument("--model_path", type=str, default="animal_classifier.h5", help="Path to trained model")
     args = parser.parse_args()
 
-    # Load the trained model only once
     model = tf.keras.models.load_model(args.model_path)
 
     # Make prediction
