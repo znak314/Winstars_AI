@@ -71,5 +71,5 @@ class AnimalClassifier:
         loss, accuracy = self.model.evaluate(test_data)
         print(f"Test Loss: {loss:.4f}, Test Accuracy: {accuracy:.4f}")
 
-    def save_model(self, path='models/animal_classifier_resnet.h5'):
+    def save_model(self, path='animal_classifier_resnet.h5'):
         self.model.save(path)

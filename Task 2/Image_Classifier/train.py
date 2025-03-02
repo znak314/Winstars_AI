@@ -23,7 +23,7 @@ def main():
     classifier.evaluate(data_pipeline.test_images)
 
     # Save the trained model
-    classifier.save_model("animal_classifier.h5")
+    classifier.save_model("models/animal_classifier.h5")
 
 if __name__ == "__main__":
     main()
