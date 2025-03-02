@@ -2,7 +2,6 @@ import argparse
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
-from data_loader import ImageDataPipeline
 
 
 def load_and_preprocess_image(img_path, target_size=(224, 224)):
