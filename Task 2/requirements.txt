@@ -1,0 +1,9 @@
+matplotlib==3.7.1
+pandas==1.5.3
+seaborn==0.12.2
+numpy==1.23.5
+spacy==3.5.3
+pillow==9.4.0
+wordcloud==1.9.2
+simpletransformers==0.63.10
+tensorflow==2.12.0
