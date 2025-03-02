@@ -9,7 +9,7 @@ In the modelling part I tried 3 different models: Random Forest, Feed Forward Ne
 Training process is customizable via `.json` file. All models have unified interface with the same format of inputs and outputs.
 
 
-Source code in written in Python 3.11. All code is written in OOP style with [SOLID](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles.
+Source code is written in Python 3.11. All code is written in OOP style with [SOLID](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) principles.
 
 ## Classes
 ### 1. MnistClassifierInterface
