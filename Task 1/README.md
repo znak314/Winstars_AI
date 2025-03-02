@@ -67,7 +67,7 @@ git clone https://github.com/znak314/Winstars_AI.git
 ### 2. **Create a virtual environment**
 
    ```bash
-cd task_1
+cd "Task 1"
 python -m venv .venv
 .venv\Scripts\activate     # Windows 
 source .venv/bin/activate  # Linux
